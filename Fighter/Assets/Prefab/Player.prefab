@@ -104,6 +104,7 @@ MonoBehaviour:
   horizontalInput: 0
   verticalInput: 0
   projectilePrefab: {fileID: 346964404090482042, guid: 132c3e90990329245bab5daf6db80924, type: 3}
+  boosterPrefab: {fileID: 4980025839663459901}
   weaponType: 1
 --- !u!50 &1056806628455869371
 Rigidbody2D:
@@ -159,7 +160,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5980975981927592546
 Transform:
   m_ObjectHideFlags: 0

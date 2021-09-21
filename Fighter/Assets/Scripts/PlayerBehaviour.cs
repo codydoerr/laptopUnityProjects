@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class PlayerBehaviour : MonoBehaviour
 {
     //Whether it is public or private - default is private
@@ -18,6 +19,7 @@ public class PlayerBehaviour : MonoBehaviour
     public static float verticalUpperLimit = 0f;
     public static float verticalLowerLimit = -4.45f;
     [SerializeField] private GameObject projectilePrefab;
+    public GameObject boosterPrefab;
     [SerializeField] private int weaponType = 1;
     //int float bool
     void Start()
@@ -106,14 +108,22 @@ public class PlayerBehaviour : MonoBehaviour
     {
         lives--;
         if (lives < 0)
+        {
             Destroy(this.gameObject);
+            isPlayerAlive = false;
+        }
+
+
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.name == "Powerup(Clone)")
         {
+            Destroy(collision.gameObject);
             speed = 8f;
+            boosterPrefab.SetActive(true);
         }
     }
+
 
 }

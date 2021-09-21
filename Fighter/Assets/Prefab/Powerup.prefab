@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2032413188366145436}
   - component: {fileID: 2032413188366145437}
   - component: {fileID: 2032413188366145426}
+  - component: {fileID: 1099847485998535932}
   m_Layer: 0
   m_Name: Powerup
   m_TagString: Untagged
@@ -141,10 +142,23 @@ Animation:
   m_GameObject: {fileID: 2032413188366145433}
   m_Enabled: 1
   serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: 55d5fa6a90b7fdf43b9158ec4b84f120, type: 2}
+  m_Animation: {fileID: 7400000, guid: 916066099b590dc44927c8a8fdc8ad1f, type: 2}
   m_Animations:
-  - {fileID: 7400000, guid: 55d5fa6a90b7fdf43b9158ec4b84f120, type: 2}
+  - {fileID: 0}
+  - {fileID: 7400000, guid: 916066099b590dc44927c8a8fdc8ad1f, type: 2}
   m_WrapMode: 0
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!114 &1099847485998535932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2032413188366145433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8fe7c697aa85a6499fcdff3daa72dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

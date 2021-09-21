@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748171, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -246,10 +246,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waitTime: 1
-  enemyPrefab: {fileID: 6855307014141466829, guid: 16c9173f74a05eb40a4729b200a1a88f, type: 3}
+  enemyOnePrefab: {fileID: 6855307014141466829, guid: 16c9173f74a05eb40a4729b200a1a88f, type: 3}
+  enemyTwoPrefab: {fileID: 9007300746255886024, guid: ed451d0012ae72f48957896d9a03acc3, type: 3}
   cloudPrefab: {fileID: 8551169879917609053, guid: 2087c6facde94c741afa9370bef66964, type: 3}
   playerPrefab: {fileID: 1056806628455869351, guid: 1fded35684563ac4ca907fc7cedf0fae, type: 3}
-  powerUpPrefab: {fileID: 0}
+  powerUpPrefab: {fileID: 2032413188366145433, guid: 3eca2ec7bcc59da409d0962efda064a7, type: 3}
+  enemyOneCount: 0
 --- !u!4 &939607768
 Transform:
   m_ObjectHideFlags: 0
