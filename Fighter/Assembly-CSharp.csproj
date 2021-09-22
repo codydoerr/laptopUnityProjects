@@ -53,13 +53,14 @@
     <UnityVersion>2020.3.16f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\PowerupBehavior.cs" />
     <Compile Include="Assets\Scripts\EnemyBehaviour.cs" />
     <Compile Include="Assets\Scripts\PlayerBehaviour.cs" />
+    <Compile Include="Assets\Scripts\CloudController.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\ProjectileBehavior.cs" />
     <Compile Include="Assets\Scripts\ExplosionBehaviour.cs" />
-    <Compile Include="Assets\Scripts\CloudController.cs" />
-    <Compile Include="Assets\Scripts\PowerupBehavior.cs" />
+    <Compile Include="Assets\Scripts\BombController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

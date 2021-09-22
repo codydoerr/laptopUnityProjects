@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class PlayerBehaviour : MonoBehaviour
 {
     //Whether it is public or private - default is private
@@ -9,20 +10,40 @@ public class PlayerBehaviour : MonoBehaviour
     //What name
     //Starting value
     [SerializeField] private float speed = 5f;
+    [SerializeField] private float regularSpeed = 5f;
+    [SerializeField] private float boostSpeed = 8f;
+
     [SerializeField] private bool isPlayerAlive = true;
-    public int lives = 3;
+
     [SerializeField] private float horizontalInput;
     [SerializeField] private float verticalInput;
+
+    [SerializeField] private int weaponType;
+    [SerializeField] private float powerupTime = 5f;
+    [SerializeField] private GameObject projectilePrefab;
+    [SerializeField] private GameObject shieldPrefab;
+    [SerializeField] private GameObject boosterPrefab;
+
+
     public static float horizontalUpperLimit = 9.5f;
     public static float horizontalLowerLimit = -9.5f;
     public static float verticalUpperLimit = 0f;
     public static float verticalLowerLimit = -4.45f;
-    [SerializeField] private GameObject projectilePrefab;
-    [SerializeField] private int weaponType = 1;
+
+
+    public int lives = 3;
+    public bool hasShield = false;
+
+    private GameObject gM;
+
+
+    private int whichPowerup;
     //int float bool
     void Start()
     {
-
+        gM = GameObject.Find("GameManager");
+        ChangeWeapons(1);
+        hasShield = false;
     }
 
 
@@ -30,7 +51,6 @@ public class PlayerBehaviour : MonoBehaviour
     {
         Movement();
         Shooting();
-        ChangeWeapons();
     }
     void Movement()
     {
@@ -89,31 +109,77 @@ public class PlayerBehaviour : MonoBehaviour
             lives--;
         }
     }
-    void ChangeWeapons()
+    void ChangeWeapons(int weaponType)
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            weaponType = 1;
-        } else if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            weaponType = 2;
-        } else if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            weaponType = 3;
-        }
+        this.weaponType = weaponType;
     }
     public void Damaged()
     {
-        lives--;
+        if (!hasShield)
+            lives--;
+        else if (hasShield)
+        {
+            hasShield = false;
+            shieldPrefab.SetActive(false);
+        }
         if (lives < 0)
+        {
             Destroy(this.gameObject);
+            isPlayerAlive = false;
+        }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.name == "Powerup(Clone)")
         {
-            speed = 8f;
+            gM.GetComponent<GameManager>().PlaySound("powerUp");
+            whichPowerup = Random.Range(1, 5);
+            switch(whichPowerup)
+            {
+                case 1:
+                    Destroy(collision.gameObject);
+                    speed = boostSpeed;
+                    boosterPrefab.SetActive(true);
+                    StartCoroutine(SpeedDown(powerupTime));
+                    boosterPrefab.SetActive(false);
+
+                    break;
+                case 2:
+                    //activate shield
+                    Destroy(collision.gameObject);
+                    shieldPrefab.SetActive(true);
+                    hasShield = true;
+
+                    break;
+                case 3:
+                    Destroy(collision.gameObject);
+                    ChangeWeapons(3);
+                    StartCoroutine(PowerupTime(powerupTime));
+
+                    //activate triple bullet
+                    break;
+                case 4:
+                    Destroy(collision.gameObject);
+                    ChangeWeapons(2);
+                    StartCoroutine(PowerupTime(powerupTime));
+
+                    // activate double bullet
+                    break;
+            }
         }
     }
+    IEnumerator PowerupTime(float wait)
+    {
+        yield return new WaitForSeconds(wait);
+        ChangeWeapons(1);
+        gM.GetComponent<GameManager>().PlaySound("powerDown");
+    }
+    IEnumerator SpeedDown(float wait)
+    {
+        yield return new WaitForSeconds(wait);
+        speed = regularSpeed;
+        gM.GetComponent<GameManager>().PlaySound("powerDown");
+    }
+
 
 }
