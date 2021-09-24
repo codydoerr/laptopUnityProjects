@@ -29,6 +29,7 @@ public class PlayerBehaviour : MonoBehaviour
     public static float horizontalLowerLimit = -9.5f;
     public static float verticalUpperLimit = 0f;
     public static float verticalLowerLimit = -4.45f;
+<<<<<<< HEAD
 
 
     public int lives = 3;
@@ -38,6 +39,11 @@ public class PlayerBehaviour : MonoBehaviour
 
 
     private int whichPowerup;
+=======
+    [SerializeField] private GameObject projectilePrefab;
+    public GameObject boosterPrefab;
+    [SerializeField] private int weaponType = 1;
+>>>>>>> 7b6737f6d0b8a0fcd1c9cf081475a94bc379454d
     //int float bool
     void Start()
     {
@@ -127,11 +133,17 @@ public class PlayerBehaviour : MonoBehaviour
             Destroy(this.gameObject);
             isPlayerAlive = false;
         }
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 7b6737f6d0b8a0fcd1c9cf081475a94bc379454d
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.name == "Powerup(Clone)")
         {
+<<<<<<< HEAD
             gM.GetComponent<GameManager>().PlaySound("powerUp");
             whichPowerup = Random.Range(1, 5);
             switch(whichPowerup)
@@ -166,6 +178,11 @@ public class PlayerBehaviour : MonoBehaviour
                     // activate double bullet
                     break;
             }
+=======
+            Destroy(collision.gameObject);
+            speed = 8f;
+            boosterPrefab.SetActive(true);
+>>>>>>> 7b6737f6d0b8a0fcd1c9cf081475a94bc379454d
         }
     }
     IEnumerator PowerupTime(float wait)
@@ -180,6 +197,7 @@ public class PlayerBehaviour : MonoBehaviour
         speed = regularSpeed;
         gM.GetComponent<GameManager>().PlaySound("powerDown");
     }
+
 
 
 }

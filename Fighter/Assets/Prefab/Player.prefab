@@ -207,6 +207,11 @@ MonoBehaviour:
   isPlayerAlive: 1
   horizontalInput: 0
   verticalInput: 0
+<<<<<<< HEAD
+=======
+  projectilePrefab: {fileID: 346964404090482042, guid: 132c3e90990329245bab5daf6db80924, type: 3}
+  boosterPrefab: {fileID: 4980025839663459901}
+>>>>>>> 7b6737f6d0b8a0fcd1c9cf081475a94bc379454d
   weaponType: 1
   projectilePrefab: {fileID: 346964404090482042, guid: 132c3e90990329245bab5daf6db80924, type: 3}
   shieldPrefab: {fileID: 1000303944342066212}
